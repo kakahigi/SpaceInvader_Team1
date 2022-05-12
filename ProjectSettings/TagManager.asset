@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - ForceField
   - Enemy
   - Player
   - EnemyShot
   - PlayerShot
+  - SelfDestruct
   - 
   - 
   - 
