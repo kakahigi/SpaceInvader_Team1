@@ -8,7 +8,10 @@ public class NormalEnemy : MonoBehaviour
     [SerializeField] public float speed;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject ExplosionEffect;
+    [SerializeField] int score;
     private Rigidbody2D rb;
+    //public static float healthAmount = 6f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,6 @@ public class NormalEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void DestroyMyself()
@@ -34,10 +36,13 @@ public class NormalEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+       
         GameObject explosion = Instantiate(ExplosionEffect);
-        explosion.transform.position = this.transform.position;
-        GameSceneManager.Score++;
+        explosion.transform.position = this.transform.position;        
+        GameSceneManager.Score+= score;
+
         Destroy(this.gameObject); //自分自身のオブジェクトを消去
+       
     }
     void ShootS()
     {

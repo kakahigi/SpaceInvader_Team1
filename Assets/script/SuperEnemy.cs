@@ -9,6 +9,9 @@ public class SuperEnemy : MonoBehaviour
     [SerializeField] public float speed = 1f;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject ExplosionEffect;
+    [SerializeField] GameObject boss;
+    [SerializeField] int score;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -18,6 +21,7 @@ public class SuperEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, -speed);
         InvokeRepeating("Shoot", 0.5f, 2f);
+       
     }
 
     void DestroyMyself()
@@ -31,7 +35,7 @@ public class SuperEnemy : MonoBehaviour
     {
         GameObject explosion = Instantiate(ExplosionEffect);
         explosion.transform.position = this.transform.position;
-        GameSceneManager.Score++;
+        GameSceneManager.Score+= score;
         Destroy(this.gameObject);
     }
 
